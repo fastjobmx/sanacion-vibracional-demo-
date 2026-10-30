@@ -1,0 +1,285 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #24182f;
+  --color-plum: #382747;
+  --color-lavender: #b7a0ce;
+  --color-champagne: #d7bc86;
+  --color-ivory: #f7f3eb;
+  --color-carbon: #292631;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-ui: 'Manrope Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --ease-editorial: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-night);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-feature-settings: 'lnum';
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 1px 0 0 currentColor;
+}
+
+/* Escala tipográfica fluida */
+.t-monument {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.1rem, 7.1vw, 8.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+}
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.4vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+.t-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0 1.75rem;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  isolation: isolate;
+  transition: color 0.45s var(--ease-editorial), border-color 0.45s var(--ease-editorial), opacity 0.2s;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.55s var(--ease-editorial);
+}
+.btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-gold {
+  background: var(--color-champagne);
+  color: var(--color-night);
+}
+.btn-gold::before {
+  background: var(--color-ivory);
+}
+.btn-line {
+  border: 1px solid currentColor;
+}
+.btn-line::before {
+  background: var(--color-champagne);
+}
+.btn-line:hover {
+  color: var(--color-night);
+  border-color: var(--color-champagne);
+}
+.btn-dark {
+  background: var(--color-night);
+  color: var(--color-ivory);
+}
+.btn-dark::before {
+  background: var(--color-plum);
+}
+
+.link-underline {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: background-size 0.5s var(--ease-editorial);
+}
+.link-underline:hover {
+  background-size: 0 1px;
+  background-position: 100% 100%;
+}
+
+/* Objeto tarjeta */
+.card3d {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 900 / 550;
+  transform-style: preserve-3d;
+  --mx: 0.3;
+  --my: 0.25;
+}
+.card3d__flip {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.9s var(--ease-editorial);
+}
+.card3d[data-side='back'] .card3d__flip {
+  transform: rotateY(180deg);
+}
+.card3d__face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1.25% / 2%;
+  backface-visibility: hidden;
+}
+.card3d__face--back {
+  transform: rotateY(180deg);
+}
+.card3d__face svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Luz de estudio: reflejo que sigue al cursor sobre el foil */
+.card3d__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    60% 90% at calc(var(--mx) * 100%) calc(var(--my) * 100%),
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+.card3d__edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Diálogos nativos: la apertura se anima solo con CSS */
+.dialog {
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  transition: transform 0.6s var(--ease-editorial), opacity 0.4s, display 0.6s allow-discrete, overlay 0.6s allow-discrete;
+}
+.dialog::backdrop {
+  background: rgba(21, 13, 28, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s, display 0.6s allow-discrete, overlay 0.6s allow-discrete;
+}
+.dialog[open]::backdrop {
+  opacity: 1;
+}
+@starting-style {
+  .dialog[open]::backdrop { opacity: 0; }
+}
+.dialog--drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(30rem, 100vw);
+  height: 100dvh;
+  background: var(--color-ivory);
+  transform: translateX(100%);
+}
+.dialog--drawer[open] {
+  transform: none;
+}
+@starting-style {
+  .dialog--drawer[open] { transform: translateX(100%); }
+}
+.dialog--menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  background: var(--color-night);
+  color: var(--color-ivory);
+  transform: translateY(-100%);
+}
+.dialog--menu[open] {
+  transform: none;
+}
+@starting-style {
+  .dialog--menu[open] { transform: translateY(-100%); }
+}
+.dialog--sheet {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(72rem, 100vw);
+  height: min(44rem, 100dvh);
+  background: var(--color-ivory);
+  opacity: 0;
+  transform: translateY(24px);
+}
+.dialog--sheet[open] {
+  opacity: 1;
+  transform: none;
+}
+@starting-style {
+  .dialog--sheet[open] { opacity: 0; transform: translateY(24px); }
+}
+
+.fade-page {
+  animation: fade-page 0.6s var(--ease-editorial) both;
+}
+@keyframes fade-page {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+}
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: var(--ease-editorial);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
