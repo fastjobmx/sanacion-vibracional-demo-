@@ -2,6 +2,7 @@
 // El sitio no enlaza redes sociales: no se muestran hasta que el cliente confirme sus perfiles.
 export const site = {
   name: 'Sanación Vibracional',
+  motto: 'Visión del Alma',
   tagline: 'Todo es Luz y Amor.',
   city: 'Bogotá D. C., Colombia',
   phoneDisplay: '(57) 300 301 6000',

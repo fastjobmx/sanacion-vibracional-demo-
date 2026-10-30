@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ServiceArt } from '../components/art/ServiceArt'
 import { MediaSlot } from '../components/MediaSlot'
-import { modalities, services } from '../data/services'
+import { modalities, services, shungit, techniques } from '../data/services'
 import { whatsappLink } from '../data/site'
 import { Line, useReveal } from '../lib/motion'
 
@@ -92,8 +92,46 @@ export function Services() {
           ))}
         </div>
 
-        <p className="mt-12 max-w-3xl text-[0.85rem] leading-relaxed text-night/65">
-          El sitio actual también ofrece productos de shungit en colgantes, pulseras, esferas, pirámides y otras formas.
+        <div data-reveal-group className="mt-16 grid gap-8 border-t border-night/20 pt-10 lg:mt-24 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p data-reveal className="t-eyebrow text-[#7A6136]">También</p>
+            <h3 data-reveal className="mt-3 font-display text-[clamp(2rem,3.4vw,3.2rem)] leading-none">Otras técnicas y encuentros</h3>
+          </div>
+          <ul className="lg:col-span-7 lg:col-start-6">
+            {techniques.map((technique) => (
+              <li data-reveal key={technique} className="flex items-baseline justify-between gap-5 border-b border-night/15 py-3">
+                <span className="font-display text-[1.55rem] leading-tight">{technique}</span>
+                <a
+                  href={whatsappLink(`Hola. Quiero consultar sobre ${technique}. Gracias.`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Consultar sobre ${technique} por WhatsApp`}
+                  className="link-underline shrink-0 font-ui text-[0.75rem] font-semibold"
+                >
+                  Consultar
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <article data-reveal-group className="mt-16 grid gap-8 bg-night p-6 text-ivory md:p-12 lg:mt-24 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p data-reveal className="t-eyebrow text-champagne">Productos</p>
+            <h3 data-reveal className="mt-3 font-display text-[clamp(3rem,6vw,6rem)] leading-none">{shungit.title}</h3>
+            <p data-reveal className="mt-2 font-display text-2xl italic text-champagne">{shungit.subtitle}</p>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p data-reveal className="leading-relaxed text-ivory/80">{shungit.summary}</p>
+            <p data-reveal className="mt-4 font-display text-[1.55rem] leading-snug">{shungit.forms.join(' · ')}</p>
+            <div data-reveal className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href={whatsappLink('Hola. Quiero consultar por los productos de shungit. Gracias.')} target="_blank" rel="noreferrer" className="btn btn-gold">Consultar disponibilidad</a>
+              <a href={shungit.sheet} target="_blank" rel="noreferrer" className="link-underline font-ui text-xs font-semibold">Ver ficha del sitio actual (PDF)</a>
+            </div>
+          </div>
+        </article>
+
+        <p className="mt-10 max-w-3xl text-[0.85rem] leading-relaxed text-night/65">
           Las terapias son complementarias: no reemplazan el diagnóstico ni el tratamiento médico.
         </p>
       </div>

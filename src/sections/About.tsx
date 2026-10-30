@@ -1,4 +1,5 @@
 import { MediaSlot } from '../components/MediaSlot'
+import { juliaTherapies } from '../data/services'
 import { Line, useReveal } from '../lib/motion'
 
 // Paráfrasis de textos publicados en el sitio original. No se añade biografía ni formación.
@@ -39,10 +40,21 @@ export function About() {
               y vidente. Su rol, en sus palabras: vidente, guía y transformador, acompañando a personas en cierres de ciclo,
               duelo, despertar espiritual o pérdida de rumbo.
             </p>
-            <p data-reveal className="mt-4 max-w-2xl leading-relaxed text-ivory/70">
-              Junto a Julia Stella Palacios Martínez, trabajadora de luz, sostiene un mismo propósito: acompañar el equilibrio
-              en todos los aspectos de la vida.
-            </p>
+            <div data-reveal className="mt-8 max-w-2xl border-l border-champagne/50 pl-5">
+              <p className="font-display text-2xl leading-tight">Julia Stella Palacios Martínez</p>
+              <p className="mt-0.5 font-ui text-xs text-champagne">Trabajadora de Luz · Administradora de Empresas</p>
+              <p className="mt-2 text-[0.92rem] leading-relaxed text-ivory/70">{juliaTherapies.join(' · ')}.</p>
+            </div>
+            <div data-reveal className="mt-8 grid max-w-2xl gap-6 sm:grid-cols-2">
+              <div>
+                <p className="t-eyebrow text-champagne">Misión</p>
+                <p className="mt-2 text-[0.92rem] leading-relaxed text-ivory/70">Contribuir al crecimiento y al desarrollo espiritual, para adaptarse a los cambios que están sucediendo.</p>
+              </div>
+              <div>
+                <p className="t-eyebrow text-champagne">Visión</p>
+                <p className="mt-2 text-[0.92rem] leading-relaxed text-ivory/70">Aplicar, para cada consultante, la terapia que mejor contribuya a su alegría y bienestar.</p>
+              </div>
+            </div>
           </div>
           <dl data-reveal-group className="mt-12 grid gap-x-10 gap-y-7 sm:grid-cols-2">
             {values.map((value) => (

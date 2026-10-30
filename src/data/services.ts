@@ -70,3 +70,31 @@ export const modalities = [
   { title: 'Atención', items: ['Personas', 'Animales', 'Sitios'] },
   { title: 'Lugares', items: ['Presencial', 'A distancia', 'A domicilio'] },
 ]
+
+// Técnicas y ofertas nombradas en el sitio sin ficha propia: solo se citan, sin describir resultados.
+export const techniques = [
+  'Imposición de manos',
+  'Curación cuántica',
+  'Meditaciones',
+  'Regresiones',
+  'Péndulo',
+  'Limpiezas energéticas de personas',
+  'Talleres y otros',
+]
+
+// Formación y terapias publicadas por Julia Stella Palacios Martínez en la sección Equipo.
+export const juliaTherapies = [
+  'Terapia de sanación Reconectiva y Reconexión',
+  'Toques Arcangélicos',
+  'Balance energético de chakras',
+  'Esencias florales',
+  'Coaching y programación neurolingüística',
+]
+
+export const shungit = {
+  title: 'Shungit',
+  subtitle: 'El Cristal de la Nueva Era',
+  summary: 'Un mineral negro, ligero y similar al carbón, originario de Rusia.',
+  forms: ['Colgantes', 'Piedra rodada', 'Esferas', 'Pirámides', 'Cubos', 'Huevos', 'Armonizadores', 'Pulseras', 'Placas'],
+  sheet: 'https://www.sanacionvibracional.com/index_htm_files/Shungit-Descripcion.pdf',
+}

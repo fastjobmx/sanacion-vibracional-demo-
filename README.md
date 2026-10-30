@@ -36,8 +36,9 @@ El checkout solo conoce el contrato `PaymentProvider` (`src/lib/payments/types.t
 ## Pendiente de confirmar con el cliente
 
 - Nombres de los cinco modelos, precios, acabados, costos de envío y especificaciones reales de impresión.
+- Técnicas sin ficha (curación cuántica, regresiones, péndulo, talleres y otras): el sitio solo las menciona, faltan sus descripciones.
 - Redes sociales: el sitio original no enlaza ninguna, por eso no se muestran.
 - Retrato de Rodrigo Castrillón Bedoya: hay un espacio marcado, pendiente de autorización.
 - Destino del formulario de contacto: hoy abre WhatsApp o el correo con el mensaje listo.
 - Textos de servicios: se resumieron en tono neutro y se omitieron afirmaciones de salud del sitio original (por ejemplo, sobre tratamientos o regeneración física). También se añadió una nota de que las terapias no reemplazan la atención médica.
-- Logotipo: se usó un wordmark tipográfico mientras se decide si se rediseña el logo actual.
+- Logotipo: se usa el del sitio original, recortado sobre transparente desde una imagen de 854 px. Conviene pedir el archivo vectorial.

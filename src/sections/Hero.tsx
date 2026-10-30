@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Card3D, SAMPLE } from '../components/card/Card'
-import { Wordmark } from '../components/layout/Nav'
+import { Motto, Wordmark } from '../components/layout/Nav'
 import { MediaSlot } from '../components/MediaSlot'
 import { media } from '../data/media'
 import { getProduct, type ProductId } from '../data/products'
@@ -79,7 +79,7 @@ export function Hero() {
   return (
     <section ref={root} data-hero className="relative isolate overflow-hidden bg-night lg:h-svh lg:min-h-[44rem]">
       <div data-curtain className="fixed inset-0 z-50 flex items-center justify-center bg-night motion-reduce:hidden" aria-hidden="true">
-        <span data-brand><Wordmark className="text-2xl md:text-4xl" /></span>
+        <span data-brand className="flex flex-col items-center gap-4 px-6"><Wordmark className="h-auto w-[34rem]" /><Motto className="h-7" /></span>
       </div>
 
       {/* Luz de estudio: haz diagonal de ventana sobre el muro, no un degradado decorativo */}

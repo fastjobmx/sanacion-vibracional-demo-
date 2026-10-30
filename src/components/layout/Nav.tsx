@@ -13,12 +13,15 @@ const links = [
   { to: '/#contacto', label: 'Contacto' },
 ]
 
-export function Wordmark({ className = '' }: { className?: string }) {
-  return (
-    <span className={`font-display text-[1.32rem] uppercase leading-none tracking-[0.12em] ${className}`}>
-      Sanación <span className="text-champagne">Vibracional</span>
-    </span>
-  )
+const BASE = import.meta.env.BASE_URL
+
+/** Logo original del sitio, recortado sobre transparente. */
+export function Wordmark({ className = 'h-9' }: { className?: string }) {
+  return <img src={`${BASE}media/logo.png`} alt="Sanación Vibracional" width={854} height={135} className={`w-auto max-w-full ${className}`} />
+}
+
+export function Motto({ className = 'h-5' }: { className?: string }) {
+  return <img src={`${BASE}media/vision-del-alma.png`} alt="Visión del Alma" width={291} height={53} className={`w-auto ${className}`} />
 }
 
 export function Nav() {
@@ -43,7 +46,7 @@ export function Nav() {
     >
       <div className="mx-auto flex h-[4.5rem] max-w-[1720px] items-center justify-between px-5 md:px-10">
         <Link to="/" aria-label="Sanación Vibracional, inicio" className="whitespace-nowrap">
-          <Wordmark className="max-sm:text-[1.02rem] max-sm:tracking-[0.08em]" />
+          <Wordmark className="h-9 max-sm:h-7" />
         </Link>
         <nav aria-label="Principal" className="hidden items-center gap-9 lg:flex">
           {links.map((link) => (
@@ -66,7 +69,7 @@ export function Nav() {
       <Dialog open={menu} onClose={() => setMenu(false)} label="Menú" variant="menu">
         <div className="flex min-h-full flex-col px-5 pb-8">
           <div className="flex h-[4.5rem] items-center justify-between">
-            <Wordmark className="whitespace-nowrap max-sm:text-[1.02rem] max-sm:tracking-[0.08em]" />
+            <Wordmark className="h-9 max-sm:h-7" />
             <button type="button" onClick={() => setMenu(false)} className="flex h-11 w-11 items-center justify-center" aria-label="Cerrar menú">
               <CloseIcon />
             </button>
